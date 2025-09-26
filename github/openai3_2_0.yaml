@@ -27,3 +27,11 @@ gpt_actions:
     - push_changes
 servers:
   - url: https://chatgpt.com/gpts/editor/g-68d6f8dba0e88191862f47305b20dbff
+paths:
+  /:
+    get:
+      summary: "Hent repo-info"
+      description: "Returnerer informasjon om repoet."
+      responses:
+        '200':
+          description: "OK"
