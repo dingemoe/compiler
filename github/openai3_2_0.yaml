@@ -21,3 +21,5 @@ gpt_actions:
     - edit_repository
     - commit_changes
     - push_changes
+servers:
+  - url: https://chatgpt.com/gpts/editor/g-68d6f8dba0e88191862f47305b20dbff
