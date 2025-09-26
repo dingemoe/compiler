@@ -1,10 +1,12 @@
-# openai3.2.0.yaml
-# Konfigurasjon for å jobbe med GitHub-repoet "compiler" som et åpent prosjekt uten begrensninger
 repo:
   name: compiler
   owner: dingemoe
   url: https://github.com/dingemoe/compiler.git
   access: public
+  permissions:
+    read: true
+    write: true
+    actions: [edit, read, commit, push]
 openai:
   version: 3.2.0
   usage: unrestricted
@@ -12,3 +14,10 @@ openai:
   contributors:
     - dingemoe
     - brukere
+gpt_actions:
+  enabled: true
+  allowed_operations:
+    - read_repository
+    - edit_repository
+    - commit_changes
+    - push_changes
