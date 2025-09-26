@@ -1,0 +1,14 @@
+# openai3.2.0.yaml
+# Konfigurasjon for å jobbe med GitHub-repoet "compiler" som et åpent prosjekt uten begrensninger
+repo:
+  name: compiler
+  owner: dingemoe
+  url: https://github.com/dingemoe/compiler.git
+  access: public
+openai:
+  version: 3.2.0
+  usage: unrestricted
+  description: "Åpent prosjekt for testing og utvikling uten begrensninger."
+  contributors:
+    - dingemoe
+    - brukere
