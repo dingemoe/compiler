@@ -1,3 +1,7 @@
+info:
+  title: "Compiler GPT Actions config"
+  version: "3.2.0"
+  description: "Konfigurasjon for å jobbe med GitHub-repoet compiler og GPT Actions."
 repo:
   name: compiler
   owner: dingemoe
