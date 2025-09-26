@@ -1,0 +1,28 @@
+language: "no"
+style:
+  steps: true
+  short: true
+tooling:
+  python: ["ruamel.yaml","pydantic","jsonschema","typer","jinja2"]
+  rego: "OPA CLI"
+  deno: ["std/http","fetch"]
+actions_profile:
+  timeout_s: 45
+  payload_max: 100000
+  no_custom_headers: true
+  consequential_flag: "x-openai-isConsequential on mutating ops"
+openapi:
+  target: "3.2.0"
+  fallback: "3.1.0"
+  drop_log: true
+budgets:
+  endpoints_max: 30
+  ts_size_kb_max: 500
+  desc_len:
+    op_summary_max: 300
+    param_desc_max: 700
+quality:
+  fail_fast_rego: true
+  annotate_funcs: true
+  max_funcs_per_file: 4
+  func_summary_len_max: 250

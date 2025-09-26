@@ -1,0 +1,7 @@
+today:
+  - "Oppdater tree.yaml"
+  - "Kjør parse→rego→openapi→validate→deno→docs"
+  - "Les eval.yaml og logg avvik"
+daily:
+  - "sh tests/run_all.sh"
+  - "Revisér rules.yaml ved avvik"

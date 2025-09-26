@@ -1,0 +1,17 @@
+checks:
+  - name: "Actions-krav"
+    assert:
+      - "timeout<=45s"
+      - "payload<100k"
+      - "no_custom_headers"
+  - name: "OpenAPI-gyldig"
+    cmd: "uv run python tools/compile.py validate --in dist/openapi.yaml --fallback 3.1 --report docs/validator_report.md"
+  - name: "OPA-coverage"
+    cmd: "opa test policy --coverage --format=json > docs/opa_coverage.txt"
+  - name: "Budsjett"
+    metric:
+      - "endpoints_count<=30"
+      - "ts_size_kb<=500"
+report:
+  format: "markdown"
+  out: "docs/validator_report.md"

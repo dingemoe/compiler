@@ -1,0 +1,21 @@
+inputs:
+  yaml: "workflow.yaml (bruker egne kilder ved kjøring)"
+  policy_dir: "policy"
+stages:
+  - id: parse
+    run: "uv run python tools/compile.py parse --in scheme.yaml --ast ast.json"
+  - id: rego
+    run: "opa test policy -v && opa build -b policy -o policy.tar.gz"
+    fail_fast: true
+  - id: openapi
+    run: "uv run python tools/compile.py openapi --ast ast.json --out dist/openapi.yaml --target 3.2.0"
+  - id: validate
+    run: "uv run python tools/compile.py validate --in dist/openapi.yaml --fallback 3.1 --report docs/validator_report.md"
+  - id: deno
+    run: "uv run python tools/compile.py deno --ast ast.json --out dist/deno_playground.ts --bundle onefile"
+  - id: docs
+    run: "uv run python tools/diag.py --graph ast.json --out docs"
+guards:
+  - id: budget
+    rule: "endpoints<=30 && ts_kb<=500"
+    on_fail: "foreslå splitting"

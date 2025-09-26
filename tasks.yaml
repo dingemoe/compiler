@@ -1,0 +1,12 @@
+version: 1
+tasks:
+  - name: "init-env"
+    run: "uv pip install ruamel.yaml pydantic jsonschema typer jinja2 && command -v opa >/dev/null || echo 'Installer OPA CLI via brew'"
+  - name: "compile-all"
+    run: "sh tests/run_all.sh"
+  - name: "openapi-validate"
+    run: "uv run python tools/compile.py validate --in dist/openapi.yaml --fallback 3.1 --report docs/validator_report.md"
+  - name: "budget-check"
+    run: "bash -lc 'ENDPOINTS=$(grep -R \"operationId\" -n dist/openapi.yaml | wc -l); TSKB=$(( $(wc -c < dist/deno_playground.ts)/1024 )); [[ $ENDPOINTS -le 30 && $TSKB -le 500 ]] || exit 1'"
+  - name: "docs-refresh"
+    run: "uv run python tools/diag.py --graph ast.json --out docs"

@@ -1,0 +1,28 @@
+root: .
+dirs:
+  - tools
+  - dist
+  - docs
+  - tests
+files:
+  - rules.yaml
+  - workflow.yaml
+  - eval.yaml
+  - agenda.yaml
+  - tasks.yaml
+  - tools/compile.py
+  - tools/diag.py
+  - tests/run_all.sh
+  - dist/.gitkeep
+  - docs/.gitkeep
+contracts:
+  outputs:
+    - dist/openapi.yaml
+    - dist/deno_playground.ts
+    - docs/tree.txt
+    - docs/mindmap.md
+    - docs/endpoints.md
+    - docs/validator_report.md
+    - docs/opa_coverage.txt
+notes:
+  - "Oppdater denne ved enhver endring i struktur/artefakter."
