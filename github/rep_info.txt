@@ -1,0 +1,12 @@
+Lag en openai3.2.0.yaml for å kunne å jobbe med github rep compiler som er et åpent prosjekt (brukers prosjekt) uten begrensinger
+
+oppdater det inn i filen github/*.yaml filen
+
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/dingemoe/compiler.git
+git push -u origin main
+…or push an existing repository from the command line
+git remote add origin https://github.com/dingemoe/compiler.git
+git branch -M main
+git push -u origin main
